@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bandeira", "Bandeira\Bandeira.csproj", "{EBC0A694-F7DD-4C8C-8ABF-C62A7F4B6D1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bandeira.Test", "Bandeira.Test\Bandeira.Test.csproj", "{5EC3DA68-E8CA-4C0D-98EE-AD70CBA4B74F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{EBC0A694-F7DD-4C8C-8ABF-C62A7F4B6D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBC0A694-F7DD-4C8C-8ABF-C62A7F4B6D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBC0A694-F7DD-4C8C-8ABF-C62A7F4B6D1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EC3DA68-E8CA-4C0D-98EE-AD70CBA4B74F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EC3DA68-E8CA-4C0D-98EE-AD70CBA4B74F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EC3DA68-E8CA-4C0D-98EE-AD70CBA4B74F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EC3DA68-E8CA-4C0D-98EE-AD70CBA4B74F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
