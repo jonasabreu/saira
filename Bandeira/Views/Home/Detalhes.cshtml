@@ -1,13 +1,18 @@
-﻿
+﻿@model Bandeira.Models.ArquivoDaLista
+
 @{
     ViewBag.Title = "Detalhes";
 }
 
 <h2>Detalhes</h2>
 
-<section>
-    <hr />
-    <div>
-
-    </div>
+<section class="Pagina">
+    <h2>@Model.nome</h2>
+    <section class="Conteudo">
+        <div>
+            @Model.conteudo;
+        </div>
+    </section>
 </section>
+
+@Html.ActionLink("proximo", "Detalhes", @Model.proximo)
