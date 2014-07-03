@@ -27,15 +27,19 @@ namespace Bandeira.Controllers
 
                 if(!Directory.EnumerateFileSystemEntries(objeto.Diretorio).Any())
                 {
-
+                    return View("Index");
                 }
-                return View("Resultado", objeto);
+                return RedirectToAction("Detalhes", objeto);
             }
             return View(objeto);
         }
 
-        public ActionResult Resultado(Dados objeto)
+        public ActionResult Detalhes(Dados objeto)
         {
+            Acao executar = new Acao();
+
+
+
             return View();
         }
     }

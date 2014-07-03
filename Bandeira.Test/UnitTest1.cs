@@ -16,8 +16,18 @@ namespace Bandeira.Test
             Acao executar = new Acao();
             string path = "C:/Verificar";
             string resp = executar.CriarRepositorio(path);
-
             Directory.Exists(resp).Should().Be(true);
         }
+
+        [Test]
+        public void TestaClonagemDeRepositorio()
+        {
+            Acao executar = new Acao();
+            string resp = executar.CriarRepositorio("C:/Verificar");
+            executar.ClonarRepositorio("https://github.com/jonasabreu/leis-site.git", "C:/Verificar");
+            Directory.EnumerateFiles("C:/Verificar").Should().NotBeNull();
+        }
+
+
     }
 }
