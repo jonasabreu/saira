@@ -29,19 +29,24 @@ namespace Bandeira.Controllers
                 {
                     return View("Index");
                 }
-                return RedirectToAction("Detalhes", objeto);
+                return RedirectToAction("Detalhes");
             }
             return View(objeto);
         }
 
-        public ActionResult Detalhes(Dados objeto)
+        public ActionResult Detalhes()
         {
             Acao executar = new Acao();
+            string[] arqs = executar.ExtrairTodosOsArquivos("C:/TestaArquivosOnline");
+            List<string> resp = arqs.ToList();
+            string conteudo = executar.ExtrairConteudoDoArquivo(resp.ElementAt(0));
 
-
-
-            return View();
+            return View(resp.ElementAt(0), conteudo, 1);
         }
+
+
+
+
     }
 
 }

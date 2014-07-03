@@ -26,9 +26,18 @@ namespace Bandeira.Models
 
                 Repository.Clone(URL, path);
         }
+        
+        public string[] ExtrairTodosOsArquivos(string path)
+        {
+            string[] arquivos = Directory.GetFiles(path, "*", SearchOption.AllDirectories);
+            return arquivos;
+        }
 
-
-
+        public string ExtrairConteudoDoArquivo(string path)
+        {
+            string resp = File.ReadAllText(path);
+            return resp;
+        }
 
     }
 }
