@@ -14,5 +14,7 @@ namespace Bandeira.Models
         [Required(ErrorMessage = "Favor, insira um diretório onde salvar os dados")]
         [RegularExpression(@"[A-Z]{1}\:\/([\w]+\/*)+", ErrorMessage = "Formato de diretorio inválido!")]
         public string Diretorio { get; set; }
+
+        public bool exibir { get; set; }
     }
 }

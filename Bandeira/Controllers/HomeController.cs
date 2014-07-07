@@ -23,11 +23,15 @@ namespace Bandeira.Controllers
             {
                 Acao executar = new Acao();
                 executar.CriarRepositorio(objeto.Diretorio);
-                executar.ClonarRepositorio(objeto.URL, objeto.Diretorio);
-
-                if(!Directory.EnumerateFileSystemEntries(objeto.Diretorio).Any())
+                try
                 {
-                    return View("Index");
+                    executar.ClonarRepositorio(objeto.URL, objeto.Diretorio);
+                    objeto.exibir = false;
+                }
+                catch
+                {
+                    objeto.exibir   = true;
+                    return View("Index", objeto);
                 }
                 return RedirectToAction("Detalhes", new { id = 0 });
             }

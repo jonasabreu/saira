@@ -18,5 +18,10 @@
             @Html.ValidationMessageFor(M => M.Diretorio)
         </section>
         <button name="btnExecutar" type="submit">Executar</button>
-    </fieldset> 
+    </fieldset>
+    
+    if(@Model.exibir)
+    {
+        <div><h2>O repositório não pôde ser clonado<br />Favor verifique a validade da URL digitada</h2></div>
+    }
 }

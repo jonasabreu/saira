@@ -23,8 +23,7 @@ namespace Bandeira.Models
                 Apagador apagar = new Apagador();
                 apagar.DeleteDirectory(path);
             }
-
-                Repository.Clone(URL, path);
+            Repository.Clone(URL, path);
         }
         
         public string[] ExtrairTodosOsArquivos(string path)
