@@ -47,10 +47,6 @@ namespace Bandeira.Controllers
 
             return View(new ArquivoDaLista(resp.ElementAt(id), conteudo, (id + 1), arqs.Length));
         }
-
-
-
-
     }
 
 }

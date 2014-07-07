@@ -79,6 +79,7 @@ label, input
 
 button
 {
+    cursor: pointer;
     text-align: center;
     margin-top: 5%;
     padding-top: 2%;
@@ -87,8 +88,63 @@ button
     padding-bottom: 2%;
 }
 
-p
+h2
 {
-    margin: auto;
+    align-content: center;
 }
 
+.pagina
+{
+    background-color: #58ACFA;
+    border:thick;
+    border-radius: 5px 5px 5px 5px;
+    margin: auto;
+    width: 90%;
+}
+
+nav ul
+{
+    list-style-type: none;
+    padding-top: 20px;
+    padding-left: 120px;
+}
+
+ul li
+{
+    background:#3A5FCD;
+    border:solid 1px; 
+    border-radius: 5px 5px 0 0;
+    float: left;    
+    font-size: 100%;  
+    height:30px; 
+    text-align: center; 
+    padding-top:5px;
+}
+
+.conteudo
+{
+    background-color: white;
+    border: solid 1px;
+    border-style: solid;
+    border-radius: 5px 5px 5px 5px;
+    clear: both;
+    min-height: 400px;
+    width: 80%;
+    margin-top: 0px;
+    overflow:hidden;
+    margin: auto;
+    word-wrap: break-word;
+}
+
+.voltar, .proximo
+{
+    background-color: #BDBDBD;
+    border:        solid 1px;
+    border-style:  solid;
+    border-radius: 10px 10px 10px 10px;
+    text-align:    center;
+    padding-top:     0.2%;
+    padding-bottom:  0.2%;
+    margin-top: 2%;
+    width: 8%;
+}

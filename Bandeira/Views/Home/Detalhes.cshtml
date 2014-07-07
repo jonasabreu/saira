@@ -5,28 +5,35 @@
 }
 
 <h2>Detalhes</h2>
-
-<section class="Pagina">
-    <h2>@Model.nome</h2>
-    <section class="Conteudo">
-        <div>
+<section class="pagina">
+    <nav class="titulo">
+        <ul>
+            <li><span>@Model.nome</span></li>
+        </ul>
+        <br>
+    </nav>  
+    <section class="conteudo">
             <pre> @Model.conteudo; </pre>
-        </div>
     </section>
+        @{
+            if (Model.proximo != 1)
+            {
+                <div class="voltar">
+                    @{
+                        int anterior = Model.proximo - 2;
+                        @Html.ActionLink("Anterior", "Detalhes", new { id = anterior })
+                    }
+                </div>
+            }
+        }
+        @{
+            if (Model.proximo != Model.totalDeArquivos)
+            {
+                <div class="proximo">
+                    @Html.ActionLink("Proximo", "Detalhes", new { id = @Model.proximo })
+                </div>
+            }
+        }
 </section>
 
-@{
-    if(Model.proximo != 1)
-    {
-        int anterior = Model.proximo - 2;
-        @Html.ActionLink("Anterior", "Detalhes", new { id = anterior })
-    }
-}
-
-@{
-    if(Model.proximo != Model.totalDeArquivos)
-    {  
-        @Html.ActionLink("Proximo", "Detalhes", new { id = @Model.proximo })
-    }
-}
 
