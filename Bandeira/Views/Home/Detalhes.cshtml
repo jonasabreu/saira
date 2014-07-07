@@ -10,9 +10,23 @@
     <h2>@Model.nome</h2>
     <section class="Conteudo">
         <div>
-            @Model.conteudo;
+            <pre> @Model.conteudo; </pre>
         </div>
     </section>
 </section>
 
-@Html.ActionLink("proximo", "Detalhes", @Model.proximo)
+@{
+    if(Model.proximo != 1)
+    {
+        int anterior = Model.proximo - 2;
+        @Html.ActionLink("Anterior", "Detalhes", new { id = anterior })
+    }
+}
+
+@{
+    if(Model.proximo != Model.totalDeArquivos)
+    {  
+        @Html.ActionLink("Proximo", "Detalhes", new { id = @Model.proximo })
+    }
+}
+
