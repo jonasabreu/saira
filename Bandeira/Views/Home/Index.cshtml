@@ -12,10 +12,6 @@
             <label for="URLRepo">Endereço do repositório:</label>
             <input id="URLRepo" name="URL" pattern="((?:https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)" value="@Model.URL" title="Url inserida não é válida!" />
             @Html.ValidationMessageFor(M => M.URL)
-
-            <label for="DirID">Diretório:</label>
-            <input id="DirID" name="Diretorio" value="@Model.Diretorio" />
-            @Html.ValidationMessageFor(M => M.Diretorio)
         </section>
         <button name="btnExecutar" type="submit">Executar</button>
     </fieldset>
