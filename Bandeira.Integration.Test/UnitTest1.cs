@@ -54,6 +54,17 @@ namespace Bandeira.Integration.Test
         }
 
         [TestMethod]
+        public void BotaoAnteriorNaoApareceNaprimeiraPagina()
+        {
+            var driver = TestEnvironment.driver;
+            driver.Navigate().GoToUrl("http://localhost:8080/");
+            driver.FindElement(By.Id("URLRepo")).SendKeys("https://github.com/jonasabreu/leis-site.git");
+            driver.FindElement(By.Id("DirID")).SendKeys("C:/TestaArquivosOnline");
+            driver.FindElement(By.Name("btnExecutar")).Click();
+            driver.FindElementByCssSelector(".voltar a").Should().BeNull();
+        }
+
+        [TestMethod]
         public void NavegarParaPaginaI()
         {
             var driver = TestEnvironment.driver;
@@ -87,5 +98,7 @@ namespace Bandeira.Integration.Test
             driver.FindElement(By.CssSelector(".voltar a")).Click();
             driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/" + (i - 1));
         }
+
+
     }
 }
