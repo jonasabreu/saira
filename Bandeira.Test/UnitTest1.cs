@@ -13,21 +13,33 @@ namespace Bandeira.Test
         [Test]
         public void TestaCriacaoDeDiretorio()
         {
-            Acao executar = new Acao();
+            Repositorio repo = new Repositorio();
             string path = "C:/Verificar";
-            string resp = executar.CriarRepositorio(path);
+            string resp = repo.Criar(path);
             Directory.Exists(resp).Should().Be(true);
         }
 
         [Test]
         public void TestaClonagemDeRepositorio()
         {
-            Acao executar = new Acao();
-            string resp = executar.CriarRepositorio("C:/Verificar");
-            executar.ClonarRepositorio("https://github.com/jonasabreu/leis-site.git", "C:/Verificar");
+            Repositorio repo = new Repositorio();
+                 string resp = repo.Criar("C:/Verificar");
+                        repo.Clonar("https://github.com/jonasabreu/leis-site.git", "C:/Verificar");
             Directory.EnumerateFiles("C:/Verificar").Should().NotBeNull();
         }
 
+        [Test]
+        public void TestaExtracaoDeNomesDeArquivos()
+        {
+            Arquivo arq = new Arquivo();
+            Repositorio repo = new Repositorio();
+                 string resp = repo.Criar("C:/TestaArquivosOnline");
+                               repo.Clonar("https://github.com/jonasabreu/leis-site.git", "C:/TestaArquivosOnline");
+            Directory.EnumerateFiles("C:/TestaArquivosOnline").Should().NotBeNull();
+            var teste = arq.ExtrairDaPasta("C:/TestaArquivosOnline");
+
+            teste.Should().NotBeNull();
+        }
 
     }
 }
