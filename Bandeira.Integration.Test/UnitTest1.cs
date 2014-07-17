@@ -62,6 +62,19 @@ namespace Bandeira.Integration.Test
             driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/" + (i - 1));
         }
 
+        [TestMethod]
+        public void VerificarSePrettyFyEstaFuncionando()
+        {
+            var driver = TestEnvironment.driver;
+            driver.Navigate().GoToUrl("http://localhost:8080/");
+            driver.FindElement(By.Id("URLRepo")).SendKeys("https://github.com/jonasabreu/leis-site.git");
+            driver.FindElement(By.Name("btnExecutar")).Click();
 
+            driver.FindElementByCssSelector("pre.prettyprinted").Should().NotBeNull();
+        }
+
+
+
+        
     }
 }
