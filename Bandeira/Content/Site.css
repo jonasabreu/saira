@@ -61,11 +61,14 @@ input[type="checkbox"].input-validation-error {
 
 textArea
 {
-    background-color:black;
+    background-color: white;
+    border-bottom: none;
     margin-top: 0px;
     border-radius: 5px 5px;
     padding:initial;
+    height: 400px;
     width:100%;
+    word-wrap: break-word;
 }
 
 form
@@ -78,6 +81,12 @@ form
     padding-left: 5%;
     padding-right: 5%;
     width: 45%;
+}
+
+h2
+{
+    margin: auto;
+    text-align: center;
 }
 
 fieldset
@@ -129,7 +138,7 @@ nav ul
 {
     list-style-type: none;
     padding-top: 20px;
-    padding-left: 1.3%;;
+    padding-left: 30px;;
 }
 
 ul li
@@ -154,7 +163,7 @@ ul li
     border-radius: 5px 5px 5px 5px;
     width: 46%;
     margin-top: 0px;
-    margin-left: 1%;
+    margin-left: 2%;
     margin-bottom: 1%;
     overflow:hidden;
     word-wrap: break-word;
