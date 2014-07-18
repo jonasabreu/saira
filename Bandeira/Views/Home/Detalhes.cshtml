@@ -16,13 +16,10 @@
         <pre class="prettyprint linenums"> @Model.conteudo; </pre>
     </div>
 
-        <form class="formAnot">
-            <textarea rows="30">
-
-            </textarea>
+        <form class="formAnot" action="Home/SalvarDados" method="post">
+            <textarea rows="30"></textarea>
+            <button name="btnSalvar" type="submit">Salvar</button>
         </form>
-
-
     <div class="clear"></div>
         @{
             if (Model.proximo != 1)
