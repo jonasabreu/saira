@@ -72,9 +72,5 @@ namespace Bandeira.Integration.Test
 
             driver.FindElementByCssSelector("pre.prettyprinted").Should().NotBeNull();
         }
-
-
-
-        
     }
 }
