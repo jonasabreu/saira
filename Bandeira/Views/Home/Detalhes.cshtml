@@ -5,16 +5,21 @@
 }
 
 <h2>Detalhes</h2>
-<section class="pagina">
+<section class="pagConteudo">
     <nav class="titulo">
         <ul>
-            <li><span>@Model.nome</span></li>
+            <li><span class="nome">@Model.nome</span></li>
         </ul>
         <br>
     </nav>  
-    <section class="conteudo">
+    <div class="conteudo">
         <pre class="prettyprint linenums"> @Model.conteudo; </pre>
-    </section>
+    </div>
+    <div class="anotacoes">
+
+
+    </div>
+    <div class="clear"></div>
         @{
             if (Model.proximo != 1)
             {
@@ -35,5 +40,6 @@
             }
         }
 </section>
+
 
 
