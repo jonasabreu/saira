@@ -10,9 +10,8 @@
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
+input, select
+{
     max-width: 280px;
 }
 
@@ -39,6 +38,27 @@ input[type="checkbox"].input-validation-error {
 
 .validation-summary-valid {
     display: none;
+}
+
+.formAnot
+{
+    background-color: blue;
+    border-radius: 5px 5px 5px 5px;
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-bottom: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+textArea
+{
+    background-color:black;
+    margin-top: 0px;
+    border-radius: 5px 5px;
+    padding:initial;
+    width:inherit;
 }
 
 form
