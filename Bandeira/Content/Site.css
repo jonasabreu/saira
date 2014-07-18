@@ -42,14 +42,21 @@ input[type="checkbox"].input-validation-error {
 
 .formAnot
 {
-    background-color: blue;
+    background-color: white;
+    border: solid 0px;
     border-radius: 5px 5px 5px 5px;
     padding-top: 0px;
     padding-left: 0px;
     padding-right: 0px;
     margin-bottom: 0px;
-    height: 100%;
-    width: 100%;
+    width: 46%;
+    min-height: 400px;
+    margin-top: 0px;
+    margin-left: 50%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    overflow:hidden;
+    word-wrap: break-word;
 }
 
 textArea
@@ -58,7 +65,7 @@ textArea
     margin-top: 0px;
     border-radius: 5px 5px;
     padding:initial;
-    width:inherit;
+    width:100%;
 }
 
 form
@@ -155,18 +162,7 @@ ul li
 
 .anotacoes
 {
-    background-color: white;
-    border: solid 0px;
-    border-style: solid;
-    border-radius: 5px 5px 5px 5px;
-    width: 46%;
-    min-height: 450px;
-    margin-top: 0px;
-    margin-left: 50%;
-    margin-right: 1%;
-    margin-bottom: 1%;
-    overflow:hidden;
-    word-wrap: break-word;
+
 }
 
 hr
