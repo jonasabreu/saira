@@ -19,6 +19,9 @@ namespace Bandeira.Controllers
         [HttpPost]
         public ActionResult Index(Dados objeto)
         {
+            Dictionary<string, string> dic = new Dictionary<string, string> { };
+            Session.Add("Dicionario", dic);
+
             if(ModelState.IsValid)
             {
                 Arquivo executar = new Arquivo();
@@ -51,7 +54,8 @@ namespace Bandeira.Controllers
 
         public ActionResult SalvarDados(ArquivoDaLista arquivo)
         {
-            Session.Add(arquivo.nome, arquivo.anotacao);
+            Dictionary<string, string> dic = (Dictionary<string, string>)Session["Dicionario"];
+            dic.Add(arquivo.nome, arquivo.anotacao);
             return View("Detalhes", arquivo);
         }
     }
