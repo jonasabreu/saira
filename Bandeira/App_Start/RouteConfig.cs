@@ -19,11 +19,6 @@ namespace Bandeira
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
-            routes.MapRoute(
-                name: "Anotacoes",
-                url: "{controller}/{action}/{texto}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
         }
     }
 }

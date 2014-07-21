@@ -16,10 +16,15 @@
         <pre class="prettyprint linenums"> @Model.conteudo; </pre>
     </div>
 
-        <form class="formAnot" action="Home/SalvarDados" method="post">
-            <textarea rows="30"></textarea>
+        <form class="formAnot" action="~/Home/SalvarDados" method="post">
+            <input type="hidden" name="nome"            value="@Model.nome" />
+            <input type="hidden" name="conteudo"        value="@Model.conteudo" />
+            <input type="hidden" name="proximo"         value="@Model.proximo" />
+            <input type="hidden" name="totalDeArquivos" value="@Model.totalDeArquivos" />
+            <textarea rows="30"  name="anotacao"></textarea>
             <button name="btnSalvar" type="submit">Salvar</button>
         </form>
+
     <div class="clear"></div>
         @{
             if (Model.proximo != 1)
