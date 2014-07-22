@@ -17,11 +17,9 @@
     </div>
 
         <form class="formAnot" action="~/Home/SalvarDados" method="post">
-            <input type="hidden" name="nome"            value="@Model.nome" />
-            <input type="hidden" name="conteudo"        value="@Model.conteudo" />
-            <input type="hidden" name="proximo"         value="@Model.proximo" />
-            <input type="hidden" name="totalDeArquivos" value="@Model.totalDeArquivos" />
-            <textarea rows="30"  name="anotacao" class="textFormAnot"></textarea>
+            <input type="hidden" name="nome"   value="@Model.nome" />
+            <input type="hidden" name="atual"  value="@(Model.proximo -1)" />
+            <textarea rows="30"  name="anotacao" class="textFormAnot">@Model.anotacao</textarea>
             <button name="btnSalvar" type="submit">Salvar</button>
         </form>
 
@@ -46,7 +44,7 @@
             else
             {
                 <div class="resumo">
-                    @Html.ActionLink("Resumo", "Anotacoes")
+                    @Html.ActionLink("Anotações", "Anotacoes")
                 </div>
             }
         }

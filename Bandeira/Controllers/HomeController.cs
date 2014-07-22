@@ -42,7 +42,7 @@ namespace Bandeira.Controllers
             return View(objeto);
         }
 
-        public ActionResult Detalhes(int id)
+        public ActionResult Detalhes(int id, string anotacao = null)
         {
             Arquivo executar = new Arquivo();
 
@@ -52,22 +52,22 @@ namespace Bandeira.Controllers
             {
                 Session["Tamanho"] = resp.Count;
             }
-            return View(new ArquivoDaLista(resp.ElementAt(id), conteudo, (id + 1), resp.Count));
+            return View(new ArquivoDaLista(resp.ElementAt(id), conteudo, (id + 1), resp.Count, anotacao));
         }
 
-        public ActionResult SalvarDados(ArquivoDaLista arquivo)
+        public ActionResult SalvarDados(string nome, int atual, string anotacao)
         {
             Dictionary<string, string> dic = (Dictionary<string, string>)Session["Dicionario"];
 
-            if(dic.ContainsKey(arquivo.nome))
+            if(dic.ContainsKey(nome))
             {
-                dic[arquivo.nome] = arquivo.conteudo;
+                dic[nome] += "\n" + anotacao;
             }
             else
             {
-                dic.Add(arquivo.nome, arquivo.anotacao);
+                dic.Add(nome, anotacao);
             }
-            return View("Detalhes", arquivo);
+            return RedirectToAction("Detalhes", new { id = atual });
         }
 
         public ActionResult Anotacoes()

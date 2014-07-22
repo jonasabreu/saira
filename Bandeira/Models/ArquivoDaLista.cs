@@ -23,15 +23,6 @@ namespace Bandeira.Models
             this.anotacao = "";
         }
 
-        public ArquivoDaLista(string nome, string cont, int prox, int total)
-        {
-            this.nome            = nome;
-            this.conteudo        = cont;
-            this.proximo         = prox;
-            this.totalDeArquivos = total;
-            this.anotacao = "";
-        }
-
         public ArquivoDaLista(string nome, string cont, int prox, int total, string anotacao)
         {
             this.nome = nome;
