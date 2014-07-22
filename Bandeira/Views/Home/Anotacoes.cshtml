@@ -1,18 +1,27 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Anotacoes";
-    var dic = (Dictionary<string, string>)Session["Dicionario"];}
+    var dic = (Dictionary<string, string>)Session["Dicionario"];
+    var tam = (int)Session["Tamanho"];
 }
+<h2>Anotações</h2>
 
-<h2>Anotacoes</h2>
-
-@{
-    int prox = 0;
-    foreach(string el in dic.Keys)
-    {
-        <div class="tituloArq"><h2>@el</h2></div>
-        <div class="conteuArq"><pre>@dic[el]</pre></div>
-        prox++;
+<section class="anotacoes">
+    @{
+        int prox = 0;
+        foreach (string el in dic.Keys)
+        {
+            <div class="tituloArq"><h2>@el</h2></div>
+            <div class="conteuArq"><pre>@dic[el]</pre></div>
+            prox++;
+        }
     }
-}
+    <nav>
+        <div class="voltar">
+             <a href="~/Home/Detalhes/@(tam -1)">Voltar</a>
+        </div>
+        <div class="home">
+            <a href="~/Home">Home</a>
+        </div>
+    </nav>
+</section>
 

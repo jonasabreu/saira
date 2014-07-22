@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Bandeira.Models
 {
-    public class Secao
+    public class Regex
     {
         public Dictionary<string, string> dic { get; set; }
     }

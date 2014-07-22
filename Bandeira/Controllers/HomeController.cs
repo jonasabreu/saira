@@ -48,14 +48,25 @@ namespace Bandeira.Controllers
 
             IList<string> resp = executar.ExtrairDaPasta("C:/TestaArquivosOnline");
             string conteudo = executar.ExtrairConteudo("C:/TestaArquivosOnline"+resp.ElementAt(id));
-
+            if(Session["Tamanho"] == null)
+            {
+                Session["Tamanho"] = resp.Count;
+            }
             return View(new ArquivoDaLista(resp.ElementAt(id), conteudo, (id + 1), resp.Count));
         }
 
         public ActionResult SalvarDados(ArquivoDaLista arquivo)
         {
             Dictionary<string, string> dic = (Dictionary<string, string>)Session["Dicionario"];
-            dic.Add(arquivo.nome, arquivo.anotacao);
+
+            if(dic.ContainsKey(arquivo.nome))
+            {
+                dic[arquivo.nome] = arquivo.conteudo;
+            }
+            else
+            {
+                dic.Add(arquivo.nome, arquivo.anotacao);
+            }
             return View("Detalhes", arquivo);
         }
 

@@ -83,11 +83,6 @@ form
     width: 45%;
 }
 
-h2
-{
-    margin: auto;
-    text-align: center;
-}
 
 fieldset
 {
@@ -176,7 +171,7 @@ hr
 }
 
 
-.voltar, .proximo, .resumo
+.voltar, .proximo, .resumo, .home
 {
     display: inline-block;
     background-color: #BDBDBD;
@@ -192,4 +187,33 @@ hr
     margin-top: 2%;
     width: 8%;
     overflow: hidden;
+}
+
+.tituloArq h2
+{
+    border-top: solid 1px;
+    border-left: solid 1px;
+    border-right: solid 1px;
+    border-bottom: none;
+    border-radius: 5px 5px 0px 0px;
+    background-color: aliceblue;
+    margin-top: 2%;
+    padding-left: 1%;
+    text-align: left;
+}
+
+.conteuArq
+{
+    border: solid 1px;
+    border-color: black;
+    border-radius: 5px;
+    background-color: lightskyblue;
+    padding-left: 1%;
+    word-wrap:break-word;
+}
+
+h2
+{
+    margin: auto;
+    text-align: center;
 }
