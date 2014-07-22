@@ -58,6 +58,11 @@ namespace Bandeira.Controllers
             dic.Add(arquivo.nome, arquivo.anotacao);
             return View("Detalhes", arquivo);
         }
+
+        public ActionResult Anotacoes()
+        {
+            return View();
+        }
     }
 
 }

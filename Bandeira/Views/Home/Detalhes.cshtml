@@ -21,7 +21,7 @@
             <input type="hidden" name="conteudo"        value="@Model.conteudo" />
             <input type="hidden" name="proximo"         value="@Model.proximo" />
             <input type="hidden" name="totalDeArquivos" value="@Model.totalDeArquivos" />
-            <textarea rows="30"  name="anotacao"></textarea>
+            <textarea rows="30"  name="anotacao" class="textFormAnot"></textarea>
             <button name="btnSalvar" type="submit">Salvar</button>
         </form>
 
@@ -36,12 +36,17 @@
                     }
                 </div>
             }
-        }
-        @{
+
             if (Model.proximo != Model.totalDeArquivos)
             {
                 <div class="proximo">
                     @Html.ActionLink("Proximo", "Detalhes", new { id = @Model.proximo })
+                </div>
+            }
+            else
+            {
+                <div class="resumo">
+                    @Html.ActionLink("Resumo", "Anotacoes")
                 </div>
             }
         }

@@ -40,6 +40,5 @@ namespace Bandeira.Test
 
             teste.Should().NotBeNull();
         }
-
     }
 }
