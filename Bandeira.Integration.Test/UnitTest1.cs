@@ -73,8 +73,9 @@ namespace Bandeira.Integration.Test
         }
 
         [TestMethod]
-        public void TestandoSeEnvioDeDadosNasPaginasEstaFuncionando()
+        public void EnvioDeDadosDoFormularioEstaFuncionando()
         {
+            string texto = "Testando o formulario ";
             var driver = TestEnvironment.driver;
             driver.Navigate().GoToUrl("http://localhost:8080/");
             driver.FindElement(By.Id("URLRepo")).SendKeys("https://github.com/jonasabreu/leis-site.git");
@@ -83,16 +84,17 @@ namespace Bandeira.Integration.Test
             for (int i = 0; i < 26; i++)
             {
                 driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/" + i);
-                driver.FindElement(By.ClassName("textFormAnot")).SendKeys("Testando o formulario " + i);
+                driver.FindElement(By.ClassName("textFormAnot")).SendKeys(texto + i);
                 driver.FindElement(By.Name("btnSalvar")).Click();
-                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/" + i);
+                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/" + i + "?anot=Testando%20o%20formulario%20" + i);
                 driver.FindElement(By.CssSelector(".proximo a")).Click();
             }
         }
 
         [TestMethod]
-        public void TestandoSePaginaAnotacoesEhCriada()
+        public void PaginaAnotacoesEhCriada()
         {
+            string texto = "Testando o formulario ";
             var driver = TestEnvironment.driver;
             driver.Navigate().GoToUrl("http://localhost:8080/");
             driver.FindElement(By.Id("URLRepo")).SendKeys("https://github.com/jonasabreu/leis-site.git");
@@ -101,14 +103,14 @@ namespace Bandeira.Integration.Test
             for (int i = 0; i < 26; i++)
             {
                 driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/" + i);
-                driver.FindElement(By.ClassName("textFormAnot")).SendKeys("Testando o formulario " + i);
+                driver.FindElement(By.ClassName("textFormAnot")).SendKeys(texto + i);
                 driver.FindElement(By.Name("btnSalvar")).Click();
-                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/" + i);
+                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/" + i + "?anot=Testando%20o%20formulario%20" + i);
                 driver.FindElement(By.CssSelector(".proximo a")).Click();
             }
                 driver.FindElement(By.ClassName("textFormAnot")).SendKeys("Testando o formulario 26");
                 driver.FindElement(By.Name("btnSalvar")).Click();
-                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/26");
+                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/26?anot=Testando%20o%20formulario%2026");
                 driver.FindElement(By.CssSelector(".resumo a")).Click();
 
                 driver.Url.Should().Be("http://localhost:8080/Home/Anotacoes");
@@ -116,8 +118,9 @@ namespace Bandeira.Integration.Test
         }
 
         [TestMethod]
-        public void TestandoSeInsereDuasVezesNoFormulario()
+        public void InsereDuasVezesNoFormulario()
         {
+            string texto = "Testando o formulario ";
             var driver = TestEnvironment.driver;
             driver.Navigate().GoToUrl("http://localhost:8080/");
             driver.FindElement(By.Id("URLRepo")).SendKeys("https://github.com/jonasabreu/leis-site.git");
@@ -126,14 +129,33 @@ namespace Bandeira.Integration.Test
             for (int i = 0; i < 10; i++)
             {
                 driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/" + i);
-                driver.FindElement(By.ClassName("textFormAnot")).SendKeys("Testando o formulario " + i);
+                driver.FindElement(By.ClassName("textFormAnot")).SendKeys(texto + i);
                 driver.FindElement(By.Name("btnSalvar")).Click();
-                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/" + i);
-                driver.FindElement(By.ClassName("textFormAnot")).SendKeys("huehuehuehue " + i);
+                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/" + i + "?anot=Testando%20o%20formulario%20" + i);
+                driver.FindElement(By.ClassName("textFormAnot")).SendKeys("huehuehuehue" + i);
                 driver.FindElement(By.Name("btnSalvar")).Click();
-                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/" + i);
+                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/" + i + "?anot=Testando%20o%20formulario%20"+i+"huehuehuehue" + i);
                 driver.FindElement(By.CssSelector(".proximo a")).Click();
             }
+        }
+
+
+        [TestMethod]
+        public void PreenchimentoDoAnotacoes()
+        {
+            var driver = TestEnvironment.driver;
+            driver.Navigate().GoToUrl("http://localhost:8080/");
+            driver.FindElement(By.Id("URLRepo")).SendKeys("https://github.com/jonasabreu/leis-site.git");
+            driver.FindElement(By.Name("btnExecutar")).Click();
+                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/0");
+                driver.FindElement(By.ClassName("textFormAnot")).SendKeys("Testando o formulario 0");
+                driver.FindElement(By.Name("btnSalvar")).Click();
+                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/0?anot=Testando%20o%20formulario%200");
+                driver.FindElement(By.ClassName("textFormAnot")).SendKeys("huehuehuehue");
+                driver.FindElement(By.Name("btnSalvar")).Click();
+                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/0?anot=Testando%20o%20formulario%200huehuehuehue");
+                driver.FindElement(By.CssSelector(".proximo a")).Click();
+                driver.Url.Should().Be("http://localhost:8080/Home/Detalhes/1");
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Bandeira.Controllers
             return View(objeto);
         }
 
-        public ActionResult Detalhes(int id, string anotacao = null)
+        public ActionResult Detalhes(int id, string anot = null)
         {
             Arquivo executar = new Arquivo();
 
@@ -52,7 +52,7 @@ namespace Bandeira.Controllers
             {
                 Session["Tamanho"] = resp.Count;
             }
-            return View(new ArquivoDaLista(resp.ElementAt(id), conteudo, (id + 1), resp.Count, anotacao));
+            return View(new ArquivoDaLista(resp.ElementAt(id), conteudo, (id + 1), resp.Count, anot));
         }
 
         public ActionResult SalvarDados(string nome, int atual, string anotacao)
@@ -67,7 +67,7 @@ namespace Bandeira.Controllers
             {
                 dic.Add(nome, anotacao);
             }
-            return RedirectToAction("Detalhes", new { id = atual });
+            return RedirectToAction("Detalhes", new { id = atual, anot = anotacao });
         }
 
         public ActionResult Anotacoes()
