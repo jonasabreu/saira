@@ -25,8 +25,8 @@
                 {
                     <div class="voltar">
                         @{
-                    int anterior = Model.proximo - 2;
-                    @Html.ActionLink("Anterior", "Detalhes", new { id = anterior })
+                            int anterior = Model.proximo - 2;
+                            Html.ActionLink("Anterior", "Detalhes", new { id = anterior });
                         }
                     </div>
                 }
@@ -36,8 +36,8 @@
                     <button name="btnSalvar" type="submit" class="btnProximo">Proximo</button>
                 }
                 else
-                {
-                    <button class="btnAnotacoes">@Html.ActionLink("Anotações", "Anotacoes")</button>
+                {                   
+                    <button name="btnAnotacoes" type="submit" class="btnAnotacoes">Anotacoes</button>
                 }
             }
         </form>

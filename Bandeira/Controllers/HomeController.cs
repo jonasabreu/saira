@@ -44,31 +44,38 @@ namespace Bandeira.Controllers
 
         public ActionResult Detalhes(int id, string anot = null)
         {
-            Arquivo executar = new Arquivo();
-
+            Arquivo executar = new Arquivo();           
             IList<string> resp = executar.ExtrairDaPasta("C:/TestaArquivosOnline");
-            string conteudo = executar.ExtrairConteudo("C:/TestaArquivosOnline"+resp.ElementAt(id));
-            if(Session["Tamanho"] == null)
+
+            if(id < resp.Count())
             {
-                Session["Tamanho"] = resp.Count;
+                string conteudo = executar.ExtrairConteudo("C:/TestaArquivosOnline" + resp.ElementAt(id));
+                if (Session["Tamanho"] == null)
+                {
+                    Session["Tamanho"] = resp.Count;
+                }
+                Dictionary<string, string> dic = (Dictionary<string, string>)Session["Dicionario"];
+                if (dic.ContainsKey(resp.ElementAt(id)))
+                    ViewBag.Anotacao = dic[resp.ElementAt(id)];
+                return View(new ArquivoDaLista(resp.ElementAt(id), conteudo, (id + 1), resp.Count, anot));
             }
-            Dictionary<string, string> dic = (Dictionary<string, string>)Session["Dicionario"];
-            if (dic.ContainsKey(resp.ElementAt(id)))
-                ViewBag.Anotacao = dic[ resp.ElementAt(id)];
-            return View(new ArquivoDaLista(resp.ElementAt(id), conteudo, (id + 1), resp.Count, anot));
+            return RedirectToAction("Anotacoes");
         }
 
         public ActionResult SalvarDados(string nome, int atual, string anotacao)
         {
             Dictionary<string, string> dic = (Dictionary<string, string>)Session["Dicionario"];
 
-            if(dic.ContainsKey(nome))
+            if(anotacao != "")
             {
-                dic[nome] += "\n" + anotacao;
-            }
-            else
-            {
-                dic.Add(nome, anotacao);
+                if (dic.ContainsKey(nome))
+                {
+                    dic[nome] += "\n" + anotacao;
+                }
+                else
+                {
+                    dic.Add(nome, anotacao);
+                }
             }
             return RedirectToAction("Detalhes", new { id = (atual +1) });
         }
