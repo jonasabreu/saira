@@ -3,21 +3,20 @@
     ViewBag.Title = "Inserção de URL";
 }
 
-@using(Html.BeginForm())
-{
-    @Html.ValidationSummary(true)
-    <fieldset>
-        <legend>Dados para clonagem</legend>
-        <section>      
-            <label for="URLRepo">Endereço do repositório:</label>
-            <input id="URLRepo" name="URL" pattern="((?:https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)" value="@Model.URL" title="Url inserida não é válida!" />
-            @Html.ValidationMessageFor(M => M.URL)
-        </section>
-        <button name="btnExecutar" type="submit">Executar</button>
-    </fieldset>
+    <form action="/" method="post" class="formInicio">
+        <fieldset>
+            <legend>Dados para clonagem</legend>
+            <section>
+                <label for="URLRepo">Endereço do repositório:</label>
+                <input id="URLRepo" name="URL" pattern="((?:https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)" value="@Model.URL" title="Url inserida não é válida!" />
+                @Html.ValidationMessageFor(M => M.URL)
+            </section>
+            <button name="btnExecutar" type="submit">Executar</button>
+        </fieldset>
+    </form>
     
-    if(@Model.exibir)
-    {
-        <div><h2>O repositório não pôde ser clonado<br />Favor verifique a validade da URL digitada</h2></div>
-    }
-}
+   @{   if (@Model.exibir)
+        {
+            <div><h2>O repositório não pôde ser clonado<br />Favor verifique a validade da URL digitada</h2></div>
+        }
+   }

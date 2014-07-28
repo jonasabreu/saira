@@ -17,37 +17,31 @@
     </div>
 
         <form class="formAnot" action="~/Home/SalvarDados" method="post">
-            <input type="hidden" name="nome"   value="@Model.nome" />
-            <input type="hidden" name="atual"  value="@(Model.proximo -1)" />
-            <textarea rows="30"  name="anotacao" class="textFormAnot">@Model.anotacao</textarea>
-            <button name="btnSalvar" type="submit">Salvar</button>
+            <input type="hidden" name="nome" value="@Model.nome" />
+            <input type="hidden" name="atual" value="@(Model.proximo -1)" />
+            <textarea rows="30" name="anotacao" class="textFormAnot">@ViewBag.Anotacao</textarea>
+            @{
+                if (Model.proximo != 1)
+                {
+                    <div class="voltar">
+                        @{
+                    int anterior = Model.proximo - 2;
+                    @Html.ActionLink("Anterior", "Detalhes", new { id = anterior })
+                        }
+                    </div>
+                }
+
+                if (Model.proximo != Model.totalDeArquivos)
+                {
+                    <button name="btnSalvar" type="submit" class="btnProximo">Proximo</button>
+                }
+                else
+                {
+                    <button class="btnAnotacoes">@Html.ActionLink("Anotações", "Anotacoes")</button>
+                }
+            }
         </form>
-
     <div class="clear"></div>
-        @{
-            if (Model.proximo != 1)
-            {
-                <div class="voltar">
-                    @{
-                        int anterior = Model.proximo - 2;
-                        @Html.ActionLink("Anterior", "Detalhes", new { id = anterior })
-                    }
-                </div>
-            }
-
-            if (Model.proximo != Model.totalDeArquivos)
-            {
-                <div class="proximo">
-                    @Html.ActionLink("Proximo", "Detalhes", new { id = Model.proximo })
-                </div>
-            }
-            else
-            {
-                <div class="resumo">
-                    @Html.ActionLink("Anotações", "Anotacoes")
-                </div>
-            }
-        }
 </section>
 
 

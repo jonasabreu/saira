@@ -52,6 +52,9 @@ namespace Bandeira.Controllers
             {
                 Session["Tamanho"] = resp.Count;
             }
+            Dictionary<string, string> dic = (Dictionary<string, string>)Session["Dicionario"];
+            if (dic.ContainsKey(resp.ElementAt(id)))
+                ViewBag.Anotacao = dic[ resp.ElementAt(id)];
             return View(new ArquivoDaLista(resp.ElementAt(id), conteudo, (id + 1), resp.Count, anot));
         }
 
@@ -67,7 +70,7 @@ namespace Bandeira.Controllers
             {
                 dic.Add(nome, anotacao);
             }
-            return RedirectToAction("Detalhes", new { id = atual, anot = anotacao });
+            return RedirectToAction("Detalhes", new { id = (atual +1) });
         }
 
         public ActionResult Anotacoes()
