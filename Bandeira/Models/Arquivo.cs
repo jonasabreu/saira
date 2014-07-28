@@ -11,7 +11,7 @@ namespace Bandeira.Models
     {
         public IList<string> ExtrairDaPasta(string path)
         {
-            return Directory.GetFiles(path, "*", SearchOption.AllDirectories).Select(e => e.Replace(path, "")).ToList();
+            return Directory.GetFiles(path, "*", SearchOption.AllDirectories).Where(e => !e.Contains(".git")).Select(e => e.Replace(path, "")).ToList();
         }
 
         public string ExtrairConteudo(string path)
